@@ -1,0 +1,48 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const buildings: BuildingData[] = [
+  {
+    id: "main",
+    name: "Главный корпус",
+    position: [0, 1.5, 0],
+    size: [3, 3, 2],
+    color: "#3b82f6",
+    energyUsage: 1800000,
+    smartEnergyUsage: 990000,
+  },
+  {
+    id: "energy",
+    name: "Энергофак",
+    position: [-5, 1.2, -2],
+    size: [2.5, 2.5, 2],
+    color: "#f59e0b",
+    energyUsage: 1200000,
+    smartEnergyUsage: 660000,
+  },
+  {
+    id: "it",
+    name: "IT корпус",
+    position: [5, 1.3, -1],
+    size: [2.5, 2.6, 2.2],
+    color: "#8b5cf6",
+    energyUsage: 900000,
+    smartEnergyUsage: 495000,
+  },
+  {
+    id: "library",
+    name: "Библиотека",
+    position: [-4, 0.8, 3],
+    size: [2, 1.6, 2],
+    color: "#06b6d4",
+    energyUsage: 600000,
+    smartEnergyUsage: 330000,
+  },
+  {
+    id: "lab",
+    name: "Лабораторный корпус",
+    position: [4, 1, 3],
+    size: [2.2, 2, 2],
+    color: "#ec4899",
+    energyUsage: 500000,
+    smartEnergyUsage: 275000,
+  },
+];

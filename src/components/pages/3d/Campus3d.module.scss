@@ -1,0 +1,479 @@
+// Campus3d.module.scss
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(
+    to bottom,
+    #87ceeb 0%,
+    #b3d9f2 30%,
+    #e0f2fe 60%,
+    #f0fdf4 100%
+  );
+  overflow: hidden;
+}
+
+// Подписи зданий при наведении
+.buildingLabel {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  padding: 0.85rem 1.4rem;
+  border-radius: 0.85rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e5e7eb;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: fadeInScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+  transform-origin: center bottom;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(15px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.labelText {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.labelFloors {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  opacity: 0.9;
+}
+
+// Контролы внизу
+.controls {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2.5rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 1.2rem 2.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  animation: slideUp 0.5s ease-out;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.75rem;
+    bottom: 1.5rem;
+    padding: 1rem 1.8rem;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.controlItem {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+  cursor: default;
+
+  &:hover {
+    color: #1f2937;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+}
+
+// Loading состояние
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom,
+    #87ceeb 0%,
+    #b3d9f2 30%,
+    #e0f2fe 60%,
+    #f0fdf4 100%
+  );
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+
+  .loadingContent {
+    text-align: center;
+
+    .spinner {
+      width: 70px;
+      height: 70px;
+      border: 5px solid rgba(59, 130, 246, 0.2);
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    .loadingText {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .loadingSubtext {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Дополнительный UI элемент - легенда (опционально)
+.legend {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+  max-width: 250px;
+  z-index: 10;
+  animation: slideInRight 0.5s ease-out;
+
+  @media (max-width: 968px) {
+    display: none;
+  }
+
+  .legendTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    color: #4b5563;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #1f2937;
+      transform: translateX(4px);
+    }
+
+    .legendDot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Информационная панель (опционально)
+.info {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+  max-width: 300px;
+  z-index: 10;
+  animation: slideInLeft 0.5s ease-out;
+
+  @media (max-width: 968px) {
+    display: none;
+  }
+
+  .infoTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+  }
+
+  .infoText {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  .infoStats {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #e5e7eb;
+
+    .statItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+
+      .statLabel {
+        color: #6b7280;
+      }
+
+      .statValue {
+        font-weight: 700;
+        color: #1f2937;
+      }
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Адаптивность для планшетов
+@media (max-width: 768px) {
+  .container {
+    height: 85vh;
+    min-height: 500px;
+  }
+
+  .buildingLabel {
+    padding: 0.65rem 1.1rem;
+  }
+
+  .labelText {
+    font-size: 0.85rem;
+  }
+
+  .labelFloors {
+    font-size: 0.7rem;
+  }
+
+  .controls {
+    bottom: 1rem;
+  }
+}
+
+// Адаптивность для мобильных
+@media (max-width: 480px) {
+  .container {
+    height: 75vh;
+    min-height: 400px;
+  }
+
+  .buildingLabel {
+    padding: 0.5rem 0.9rem;
+  }
+
+  .labelText {
+    font-size: 0.75rem;
+  }
+
+  .labelFloors {
+    font-size: 0.65rem;
+  }
+
+  .controls {
+    bottom: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .controlItem {
+    font-size: 0.75rem;
+  }
+}
+
+// Улучшенная производительность для слабых устройств
+@media (prefers-reduced-motion: reduce) {
+  .buildingLabel,
+  .controls,
+  .legend,
+  .info {
+    animation: none;
+  }
+
+  .controlItem:hover {
+    transform: none;
+  }
+}
+
+// Темный режим
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: linear-gradient(
+      to bottom,
+      #0f172a 0%,
+      #1e293b 40%,
+      #334155 80%,
+      #475569 100%
+    );
+  }
+
+  .buildingLabel {
+    background: rgba(30, 41, 59, 0.98);
+    border-color: #475569;
+  }
+
+  .labelText {
+    color: #f1f5f9;
+  }
+
+  .labelFloors {
+    color: #cbd5e1;
+  }
+
+  .controls {
+    background: rgba(30, 41, 59, 0.96);
+    border-color: #475569;
+  }
+
+  .controlItem {
+    color: #cbd5e1;
+
+    &:hover {
+      color: #f1f5f9;
+    }
+  }
+
+  .legend,
+  .info {
+    background: rgba(30, 41, 59, 0.96);
+    border-color: #475569;
+  }
+
+  .legendTitle,
+  .infoTitle {
+    color: #f1f5f9;
+    border-bottom-color: #475569;
+  }
+
+  .legendItem,
+  .infoText {
+    color: #cbd5e1;
+
+    &:hover {
+      color: #f1f5f9;
+    }
+  }
+
+  .statLabel {
+    color: #cbd5e1;
+  }
+
+  .statValue {
+    color: #f1f5f9;
+  }
+
+  .loading {
+    background: linear-gradient(
+      to bottom,
+      #0f172a 0%,
+      #1e293b 40%,
+      #334155 80%,
+      #475569 100%
+    );
+  }
+
+  .loadingText {
+    color: #f1f5f9;
+  }
+
+  .loadingSubtext {
+    color: #cbd5e1;
+  }
+}
+
+// Дополнительные утилиты
+.hidden {
+  display: none;
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
