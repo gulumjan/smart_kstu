@@ -12,8 +12,9 @@
   transition: all 0.3s ease;
 
   &.scrolled {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(15, 15, 15, 0.95);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -178,7 +179,7 @@
   span {
     width: 24px;
     height: 2px;
-    background: #1f2937;
+    background: #e8ebef;
     border-radius: 2px;
     transition: all 0.3s ease;
   }
@@ -205,7 +206,7 @@
   right: -100%;
   width: 280px;
   height: 100vh;
-  background: white;
+  background: rgb(25, 39, 50);
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
   padding: 6rem 2rem 2rem;
   transition: right 0.3s ease;
@@ -232,7 +233,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  color: #1f2937;
+  color: #ced2d7;
   text-decoration: none;
   font-weight: 500;
   border-radius: 0.75rem;

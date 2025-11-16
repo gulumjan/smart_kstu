@@ -1,10 +1,10 @@
-import ImpactPage from "@/components/pages/impact/ImpactPage";
+import EffectPage from "@/components/pages/effect/EffectPage";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <ImpactPage />
+      <EffectPage />
     </div>
   );
 };
