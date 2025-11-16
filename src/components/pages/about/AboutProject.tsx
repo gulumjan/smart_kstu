@@ -3,7 +3,7 @@ import scss from "./AboutProject.module.scss";
 import { FiMonitor, FiZap, FiUsers, FiTrendingUp } from "react-icons/fi";
 
 interface Feature {
-  icon: React.ElementType;
+  icon: React.ComponentType;
   title: string;
   description: string;
 }
