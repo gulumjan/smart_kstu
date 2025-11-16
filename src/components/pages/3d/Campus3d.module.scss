@@ -333,8 +333,9 @@
 // Адаптивность для мобильных
 @media (max-width: 480px) {
   .container {
-    height: 95vh;
-    min-height: 400px;
+    width: 70vh;
+    height: 100vh;
+    min-height: 900px;
   }
 
   .buildingLabel {
