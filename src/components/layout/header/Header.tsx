@@ -28,9 +28,8 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
-        {/* Logo */}
         <Link href="/" className={styles.logo} onClick={closeMobileMenu}>
-          <div className={styles.logoIcon}>⚡</div>
+          <div className={styles.logoIcon}>{"⚡"}</div>
           <div className={styles.logoText}>
             <span className={styles.logoTitle}>Умный КГТУ</span>
             <span className={styles.logoSubtitle}>Energy Efficient Campus</span>
@@ -44,9 +43,6 @@ export default function Header() {
           <Link href="/impact" className={styles.navLink}>
             Эффект
           </Link>
-          <Link href="/roadmap" className={styles.navLink}>
-            Roadmap
-          </Link>
           <Link href="/about" className={styles.navLink}>
             О проекте
           </Link>
@@ -54,7 +50,7 @@ export default function Header() {
 
         <div className={styles.cta}>
           <Link href="/feedback" className={styles.ctaButton}>
-            <span>💡</span>
+            <span>{"💡"}</span>
             feedback
           </Link>
         </div>
@@ -83,47 +79,43 @@ export default function Header() {
             className={styles.mobileNavLink}
             onClick={closeMobileMenu}
           >
-            <span className={styles.mobileNavIcon}>🏠</span>
+            <span className={styles.mobileNavIcon}>{"🏠"}</span>
             Главная
           </Link>
+
           <Link
             href="/solutions"
             className={styles.mobileNavLink}
             onClick={closeMobileMenu}
           >
-            <span className={styles.mobileNavIcon}>💡</span>
+            <span className={styles.mobileNavIcon}>{"💡"}</span>
             Решения
           </Link>
+
           <Link
             href="/impact"
             className={styles.mobileNavLink}
             onClick={closeMobileMenu}
           >
-            <span className={styles.mobileNavIcon}>📊</span>
+            <span className={styles.mobileNavIcon}>{"📊"}</span>
             Эффект
           </Link>
-          <Link
-            href="/roadmap"
-            className={styles.mobileNavLink}
-            onClick={closeMobileMenu}
-          >
-            <span className={styles.mobileNavIcon}>🗓️</span>
-            Roadmap
-          </Link>
+
           <Link
             href="/about"
             className={styles.mobileNavLink}
             onClick={closeMobileMenu}
           >
-            <span className={styles.mobileNavIcon}>ℹ️</span>О проекте
+            <span className={styles.mobileNavIcon}>{"ℹ️"}</span>О проекте
           </Link>
+
           <Link
-            href="/calculator"
+            href="/feedback"
             className={styles.mobileNavLinkCta}
             onClick={closeMobileMenu}
           >
-            <span className={styles.mobileNavIcon}>🧮</span>
-            Калькулятор экономии
+            <span className={styles.mobileNavIcon}>{"🌍"}</span>
+            feedback
           </Link>
         </nav>
       </div>

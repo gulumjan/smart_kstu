@@ -1,0 +1,44 @@
+.Footer {
+  padding: 40px 0;
+  background: #0d0f12;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    color: #d4d8dd;
+  }
+
+  .contacts {
+    display: flex;
+    gap: 20px;
+  }
+
+  .contactLink {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #e4e7eb;
+    font-size: 22px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      background: rgba(76, 201, 240, 0.12);
+      color: #4cc9f0;
+      box-shadow: 0 8px 22px rgba(76, 201, 240, 0.15);
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #8f9aa6;
+  }
+}

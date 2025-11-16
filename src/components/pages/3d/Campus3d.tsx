@@ -6,7 +6,6 @@ import { OrbitControls, Text, Html } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./Campus3d.module.scss";
 
-// Компонент П-образного главного корпуса (единое целое)
 function MainBuildingPShape({
   isHovered,
   onHover,
@@ -17,7 +16,7 @@ function MainBuildingPShape({
   const meshRef = useRef<THREE.Group>(null);
   const [showLabel, setShowLabel] = useState(false);
 
-  const mainColor = "#e8e8e8"; // Светло-серый (почти белый)
+  const mainColor = "#e8e8e8";
   const floors = 5;
 
   useFrame((state) => {
@@ -40,7 +39,6 @@ function MainBuildingPShape({
         setShowLabel(false);
       }}
     >
-      {/* Левое крыло */}
       <mesh position={[-3.5, 2.5, 0]} castShadow receiveShadow>
         <boxGeometry args={[4, 5, 4.5]} />
         <meshStandardMaterial
@@ -56,7 +54,6 @@ function MainBuildingPShape({
         />
       </mesh>
 
-      {/* Центральная часть (соединяет крылья) */}
       <mesh position={[0, 2.5, -2.25]} castShadow receiveShadow>
         <boxGeometry args={[7, 5, 2]} />
         <meshStandardMaterial
@@ -72,7 +69,6 @@ function MainBuildingPShape({
         />
       </mesh>
 
-      {/* Правое крыло */}
       <mesh position={[3.5, 2.5, 0]} castShadow receiveShadow>
         <boxGeometry args={[4, 5, 4.5]} />
         <meshStandardMaterial
@@ -88,7 +84,6 @@ function MainBuildingPShape({
         />
       </mesh>
 
-      {/* Окна - левое крыло */}
       {Array.from({ length: floors }).map((_, floor) =>
         Array.from({ length: 8 }).map((_, i) => {
           const y = -2.5 + 5 * (floor / floors) + 0.5;
@@ -108,7 +103,6 @@ function MainBuildingPShape({
         })
       )}
 
-      {/* Окна - центр */}
       {Array.from({ length: floors }).map((_, floor) =>
         Array.from({ length: 14 }).map((_, i) => {
           const y = -2.5 + 5 * (floor / floors) + 0.5;
@@ -128,7 +122,6 @@ function MainBuildingPShape({
         })
       )}
 
-      {/* Окна - правое крыло */}
       {Array.from({ length: floors }).map((_, floor) =>
         Array.from({ length: 8 }).map((_, i) => {
           const y = -2.5 + 5 * (floor / floors) + 0.5;
@@ -148,7 +141,6 @@ function MainBuildingPShape({
         })
       )}
 
-      {/* Общая крыша */}
       <mesh position={[-3.5, 5.1, 0]} castShadow>
         <boxGeometry args={[4.2, 0.2, 4.7]} />
         <meshStandardMaterial color="#1e293b" roughness={0.7} />
@@ -162,7 +154,6 @@ function MainBuildingPShape({
         <meshStandardMaterial color="#1e293b" roughness={0.7} />
       </mesh>
 
-      {/* Солнечные панели */}
       <mesh position={[-3.5, 5.25, 0]}>
         <boxGeometry args={[3.8, 0.03, 4.3]} />
         <meshStandardMaterial
@@ -194,7 +185,6 @@ function MainBuildingPShape({
         />
       </mesh>
 
-      {/* Освещение */}
       <pointLight
         position={[0, 3, 0]}
         color={isHovered ? "#22c55e" : mainColor}
@@ -202,7 +192,6 @@ function MainBuildingPShape({
         distance={8}
       />
 
-      {/* Подпись */}
       {(showLabel || isHovered) && (
         <Html position={[0, 6, 0]} center>
           <div className={styles.buildingLabel}>
@@ -215,7 +204,6 @@ function MainBuildingPShape({
   );
 }
 
-// Остальные здания
 const otherBuildings = [
   {
     id: 2,
@@ -380,7 +368,6 @@ function Building({
         />
       </mesh>
 
-      {/* Окна */}
       {Array.from({ length: building.floors }).map((_, floor) =>
         Array.from({ length: Math.floor(building.size[0] / 0.35) }).map(
           (_, i) => {
